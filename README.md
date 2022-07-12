@@ -1,8 +1,9 @@
 # addmember-telegram
+
 Use `python 3` to add member from Group A to Group B (migrate members of your group)
 
-
 ## Require
+
 * Environment of python 3 (Linux, Window)
 * Need about 20 accounts to run (Switches accounts automatically when blocked)
 * Each account needs to be in Source Group and Target Group
@@ -17,12 +18,13 @@ https://www.wikihow.com/Convert-a-Telegram-Group-to-a-Supergroup-on-PC-or-Mac
 ## Guide line
 
 * Step 1: Install package `telethon`
+
 ```
 pip install telethon
 ```
 
 * Step 2: Create file config.json
-Copy file config.json from config.example.json
+  Copy file config.json from config.example.json
 
 ```
 {
@@ -37,8 +39,10 @@ Copy file config.json from config.example.json
 	]
 }
 ```
+
 `group_target` and `group_source`: after running get_data.py, check files in data/group
-`accounts`: list your Telegram accounts; and for each accounts/phone, create an app in https://my.telegram.org/apps and copy the `api_id` and  `api_hash` into the config file.
+`accounts`: list your Telegram accounts; and for each accounts/phone, create an app in https://my.telegram.org/apps and copy the `api_id` and  `api_hash` into
+the config file.
 
 * Step 3: After setting up your `config.json` file, run `python init_session.py`, enter phone and the code you received
 
@@ -56,17 +60,19 @@ Copy file config.json from config.example.json
     "username": "None"
 }
 ```
-One group have one list user (list username), but each account Telegram have list User (difference user_id, access_hash). Use `user_id` and `access_hash` to add member, so you need get list user of each account Telegram.
+
+One group have one list user (list username), but each account Telegram have list User (difference user_id, access_hash). Use `user_id` and `access_hash` to add
+member, so you need get list user of each account Telegram.
 Note: Use username have also use to add member, but something use not have username
 
 After run get data, check again file in data/group and edit file config to change group_target, group_source, which you want to add.
 
 * Step 5: run `python add_member.py` to add member from `group_source` to `group_target`
-Logic: 
-	* after adding 1 member, sleep 2 minutes
-	* after each account adds 35 members --> sleep 15 minutes
-	* Remove account when there is a Flood Wait Error
-	* Break if there are no more accounts
+  Logic:
+    * after adding 1 member, sleep 2 minutes
+    * after each account adds 35 members --> sleep 15 minutes
+    * Remove account when there is a Flood Wait Error
+    * Break if there are no more accounts
 
 Note: If your account gets blocked, go to https://web.telegram.org/#/im?p=@SpamBot and chat /start to see the time the ban would be lifted
 
@@ -74,13 +80,15 @@ Note: If your account gets blocked, go to https://web.telegram.org/#/im?p=@SpamB
 
 Done!
 
-## Ps: 
+## Ps:
+
 This repo is now actively being maintained and updated by:
 south1907 and DanielTheGeek.
 
 Create a new issue if you have legit issues and we will do our best to resolve them.
 
 ## Contributing:
+
 * Fork the repo on Github
 * Clone the repo using `git clone addmember-telegram`
 * Make changes and stage the files: `git add .`
