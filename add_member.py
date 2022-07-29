@@ -143,13 +143,14 @@ while i < total_user:
     target_group_entity = current_client['target_group_entity']
 
     try:
-        print('Adding member: ' + user['username'])
-        user_to_add = InputPeerUser(int(user['user_id']), int(user['access_hash']))
-        client(InviteToChannelRequest(target_group_entity, [user_to_add]))
-        print('Added member '+ user['username'] +' successfully ;-)')
-        count_add += 1
-        print('sleep: ' + str(120 / total_client))
-        time.sleep(120 / total_client)
+		print('Adding member: ' + user['username'])
+		user_to_add = InputPeerUser(int(user['user_id']), int(user['access_hash']))
+		client(InviteToChannelRequest(target_group_entity, [user_to_add]))
+		print('Added member ' + user['username'] + ' successfully ;-)')
+		count_add += 1
+		seconds_to_wait = 24 * 3600
+		print('sleep: ' + str(seconds_to_wait / total_client))
+		time.sleep(seconds_to_wait / total_client)
 
     except PeerFloodError as e:
         print("Error Fooling cmnr")
